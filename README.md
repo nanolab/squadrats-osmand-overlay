@@ -3,6 +3,7 @@
 Minimal pipeline to turn **squadrats.com** vector tiles into an **OsmAnd** overlay (`.obf`) on Android.
 
 ![Preview](docs/screenshot.png)
+
 *Example overlay in OsmAnd (semi-transparent gray fill, dark-gray outline).*
 
 > Everything you need (scripts + OsmAndMapCreator folder + render style) is already **in this repository**.  
@@ -70,8 +71,3 @@ Result: **`build\Squadratinhos.obf`**
 2. Copy `squadratinhos.render.xml` → `Android/media/net.osmand.plus/files/rendering/`  
 3. Restart OsmAnd → *Map style → Squadratinhos* → zoom to your area.
 
----
-
-## Repository name
-
-**`squadrats-osmand-overlay`**
