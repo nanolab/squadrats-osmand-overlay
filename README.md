@@ -49,7 +49,7 @@ Any GeoJSON polygon works. Quick options:
    ```
    https://tiles1.squadrats.com/fiwoOW0G6oZ5Hn0eeR1TeHgc7lU2/trophies/1754233411401/{z}/{x}/{y}.pbf
    ```
-5. Open **`build_all_squadratinhos.bat`** and paste this template into the `BASE_URL` variable.
+5. Open **`build_all.bat`** and paste this template into the `BASE_URL` variable.
 
 ---
 
@@ -58,16 +58,16 @@ Any GeoJSON polygon works. Quick options:
 ```bat
 :: open OSGeo4W Shell
 cd /d d:\Projects\Python\squadrats   :: or your repo path
-build_all_squadratinhos.bat
+build_all.bat
 ```
 
-Result: **`build\Squadratinhos.obf`**
+Result: **`Squadratinhos.obf`** and **`Squadrats.obf`**
 
 ---
 
 ## Put on phone (OsmAnd, Android)
 
-1. Copy `build\Squadratinhos.obf` → `Android/media/net.osmand.plus/files/`  
-2. Copy `squadratinhos.render.xml` → `Android/media/net.osmand.plus/files/rendering/`  
-3. Restart OsmAnd → *Map style → Squadratinhos* → zoom to your area.
+1. Copy `Squadratinhos.obf` and `Squadrats.obf`  → `Android/media/net.osmand.plus/files/`  
+2. Copy `squadratinhos.render.xml` and `squadrats.render.xml` → `Android/media/net.osmand.plus/files/rendering/`  
+3. Restart OsmAnd → *Map style → Squadratinhos (or Squadrats)* → zoom to your area.
 
