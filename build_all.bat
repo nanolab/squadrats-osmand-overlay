@@ -6,7 +6,7 @@ rem ---- settings ----
 set "BUILD=build"
 set "MC_DIR=OsmAndMapCreator-main"
 set "REGION=west_flanders.geojson"
-set "BASE_URL=https://tiles1.squadrats.com/fiwoOW0G6oZ5Hn0eeR1TeHgc7lU2/trophies/1754233411401/{z}/{x}/{y}.pbf"
+set "BASE_URL=https://tiles1.squadrats.com/fiwoOW0G6oZ5Hn0eeR1TeHgc7lU2/trophies/1754678268019/{z}/{x}/{y}.pbf"
 set "Z=12"
 
 set "JAVA_BIN=C:\Program Files\Eclipse Adoptium\jdk-17.0.16.8-hotspot\bin"
@@ -15,7 +15,6 @@ if exist "%JAVA_BIN%\java.exe" set PATH=%JAVA_BIN%;%PATH%
 if exist "%BUILD%" rmdir /s /q "%BUILD%"
 mkdir "%BUILD%"
 
-echo [1] fetch to "%BUILD%\trophies.gpkg"
 python fetch_tiles.py ^
   --base-url "%BASE_URL%" ^
   --region-geojson "%REGION%" ^
