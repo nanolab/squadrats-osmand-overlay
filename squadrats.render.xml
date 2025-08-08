@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<renderingStyle name="Squadrats" version="1" depends="default">
+  <order>
+    <case tag="landuse" value="squadrats"><apply objectType="3" order="240"/></case>
+  </order>
+  <polygon>
+    <case tag="landuse" value="squadrats">
+      <apply color="#66B0B0B0" color_2="#444444" strokeWidth_2="1.6"/>
+    </case>
+  </polygon>
+</renderingStyle>

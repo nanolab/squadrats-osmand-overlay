@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rendering_types>
-  <type tag="landuse" value="squadratinhos" polygon="true" minzoom="5">
+  <type tag="landuse" value="squadrats" polygon="true" minzoom="5">
     <additional tag="name"/>
   </type>
 </rendering_types>

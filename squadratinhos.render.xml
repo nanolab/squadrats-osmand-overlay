@@ -1,36 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <renderingStyle name="Squadratinhos" version="1" depends="default">
-  <!-- Классифицируем как полигоны и ставим высокий порядок -->
   <order>
-    <case tag="landuse" value="squadratinhos">
-      <apply objectType="3" order="240"/>
-    </case>
-    <case tag="squadratinhos" value="yes">
-      <apply objectType="3" order="240"/>
-    </case>
+    <case tag="landuse" value="squadratinhos"><apply objectType="3" order="240"/></case>
   </order>
-
-  <!-- Полупрозрачная СЕРАЯ заливка + тёмно-серый контур -->
   <polygon>
-    <!-- landuse=squadratinhos -->
     <case tag="landuse" value="squadratinhos">
-      <!-- color = #AARRGGBB => 0x80 (~50% прозрачности) + B0B0B0 (светло-серый) -->
-      <apply color="#80B0B0B0" color_2="#555555" strokeWidth_2="1.6"/>
-    </case>
-
-    <!-- squadratinhos=yes (если тег на relation) -->
-    <case tag="squadratinhos" value="yes">
       <apply color="#80B0B0B0" color_2="#555555" strokeWidth_2="1.6"/>
     </case>
   </polygon>
-
-  <!-- Подписи -->
-  <text>
-    <case tag="landuse" value="squadratinhos">
-      <apply textSize="12" textColor="#444444" textHaloRadius="1.2"/>
-    </case>
-    <case tag="squadratinhos" value="yes">
-      <apply textSize="12" textColor="#444444" textHaloRadius="1.2"/>
-    </case>
-  </text>
 </renderingStyle>
