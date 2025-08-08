@@ -12,6 +12,17 @@ set "Z=12"
 set "JAVA_BIN=C:\Program Files\Eclipse Adoptium\jdk-17.0.16.8-hotspot\bin"
 if exist "%JAVA_BIN%\java.exe" set PATH=%JAVA_BIN%;%PATH%
 
+if exist "%BUILD%" rmdir /s /q "%BUILD%"
+mkdir "%BUILD%"
+
+echo [1] fetch to "%BUILD%\trophies.gpkg"
+python fetch_tiles.py ^
+  --base-url "%BASE_URL%" ^
+  --region-geojson "%REGION%" ^
+  --z-fetch %Z% ^
+  --out "%BUILD%\trophies.gpkg" ^
+  --promote-multi
+
 for %%L in (squadratinhos squadrats) do (
     set "LAYER=%%L"
     echo !LAYER!
