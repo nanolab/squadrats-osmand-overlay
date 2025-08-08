@@ -5,14 +5,6 @@ Download MVT tiles (z-fetch) that intersect a region (west_flanders.geojson) and
 append the chosen layer into a local GeoPackage.
 
 > Run from **OSGeo4W Shell** (ogr2ogr must be in PATH).
-
-Example:
-python fetch_tiles_west_flanders.py ^
-  --base-url "https://tiles1.squadrats.com/fiwoOW0G6oZ5Hn0eeR1TeHgc7lU2/trophies/1754233411401/{z}/{x}/{y}.pbf" ^
-  --region-geojson west_flanders.geojson ^
-  --z-fetch 12 ^
-  --layer squadratinhos ^
-  --out squadratinhos.gpkg
 """
 import argparse, json, math, os, subprocess, sys
 
@@ -56,8 +48,7 @@ def main():
     ap.add_argument("--base-url", required=True, help="Template like .../{z}/{x}/{y}.pbf")
     ap.add_argument("--region-geojson", required=True, help="Region boundary (WGS84) e.g., west_flanders.geojson")
     ap.add_argument("--z-fetch", type=int, default=12, help="Server max zoom to fetch (e.g., 12)")
-    ap.add_argument("--layer", default="squadratinhos", help="Layer name to extract from MVT")
-    ap.add_argument("--out", default="squadratinhos.gpkg", help="Output GeoPackage path")
+    ap.add_argument("--out", default="trophies.gpkg", help="Output GeoPackage path")
     ap.add_argument("--promote-multi", action="store_true", help="Use -nlt PROMOTE_TO_MULTI")
     args = ap.parse_args()
 
@@ -92,14 +83,14 @@ def main():
             cmd = [
                 "ogr2ogr", "-f", "GPKG", args.out, f"MVT:{url}",
                 "-update", "-append",
-                "-nln", args.layer,
-                "-dialect", "OGRSQL", "-sql", f"SELECT * FROM {args.layer}",
                 "-oo", f"Z={args.z_fetch}", "-oo", f"X={x}", "-oo", f"Y={y}",
                 "-t_srs", "EPSG:3857",
                 "-clipsrc", region_3857
             ]
             if args.promote_multi:
                 cmd += ["-nlt", "PROMOTE_TO_MULTI"]
+                
+            # print("Выполняю команду:", " ".join(cmd))
 
             r = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             if r.returncode != 0:

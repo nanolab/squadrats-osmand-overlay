@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""
-geojson2osm_squadratinhos_ids_inc.py
-Same as geojson2osm_squadratinhos.py but uses *positive increasing* IDs
-for nodes/ways/relations to avoid GDAL "Non increasing node id" warnings.
-"""
+
 import argparse, json
 from xml.sax.saxutils import escape as xml_escape
 
@@ -87,7 +83,7 @@ def convert(geojson_path, osm_path, add_index_tags, no_default, duplicate_outer)
 
             way_tags = {}
             if duplicate_outer:
-                way_tags['squadratinhos'] = 'yes'
+                # way_tags['squadratinhos'] = 'yes'
                 for kv in extra_tags:
                     k,v = parse_kv(kv)
                     if k: way_tags[k] = v
@@ -106,7 +102,7 @@ def convert(geojson_path, osm_path, add_index_tags, no_default, duplicate_outer)
         if not members: continue
 
         rid += 1
-        tags = {'type':'multipolygon', 'squadratinhos':'yes'}
+        tags = {'type':'multipolygon'}
         if name: tags['name'] = str(name)
         for kv in extra_tags:
             k,v = parse_kv(kv)
@@ -116,7 +112,7 @@ def convert(geojson_path, osm_path, add_index_tags, no_default, duplicate_outer)
 
     with open(osm_path, 'w', encoding='utf-8') as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-        f.write('<osm version="0.6" generator="geojson2osm_squadratinhos_ids_inc">\n')
+        f.write('<osm version="0.6" generator="geojson2osm">\n')
         for nid_, lon, lat in nodes:
             f.write(f'  <node id="{nid_}" lon="{lon:.7f}" lat="{lat:.7f}" />\n')
         for w in ways:

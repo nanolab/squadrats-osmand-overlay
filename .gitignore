@@ -1,4 +1,5 @@
 /build
 OsmAndMapCreator-main/regions.ocbf
 OsmAndMapCreator-main/Squadratinhos.obf
-west_flanders_3857.geojson
+*.geojson
+*.obf
