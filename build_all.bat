@@ -26,7 +26,8 @@ for %%L in (squadratinhos squadrats) do (
     set "LAYER=%%L"
     echo !LAYER!
 	
-	ogr2ogr -f GeoJSON -t_srs EPSG:4326 "%BUILD%\!LAYER!_wgs84.geojson" "%BUILD%\trophies.gpkg" "!LAYER!" -nlt PROMOTE_TO_MULTI
+	ogr2ogr -f GPKG "%BUILD%\trophies_valid.gpkg" "%BUILD%\trophies.gpkg" -nlt PROMOTE_TO_MULTI -makevalid
+	ogr2ogr -f GeoJSON -t_srs EPSG:4326 "%BUILD%\!LAYER!_wgs84.geojson" "%BUILD%\trophies_valid.gpkg" "!LAYER!" -nlt PROMOTE_TO_MULTI
 	
 	python geojson2osm.py ^
 		--in "%BUILD%\!LAYER!_wgs84.geojson" ^
